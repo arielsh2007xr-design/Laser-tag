@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0f;
+  --accent-purple: #8B5CF6;
+  --accent-cyan: #06B6D4;
+  --accent-purple-glow: rgba(139, 92, 246, 0.4);
+  --accent-cyan-glow: rgba(6, 182, 212, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent-purple), var(--accent-cyan));
+  border-radius: 2px;
+}
+
+/* Glass card utility */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Neon text utilities */
+.neon-purple {
+  color: var(--accent-purple);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6), 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.neon-cyan {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #A78BFA 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon border utilities */
+.neon-border-purple {
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2), inset 0 0 15px rgba(139, 92, 246, 0.05);
+}
+
+.neon-border-cyan {
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2), inset 0 0 15px rgba(6, 182, 212, 0.05);
+}
+
+/* Section spacing */
+.section-padding {
+  padding: 6rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 8rem 2rem;
+  }
+}
+
+/* Laser grid background */
+.laser-grid-bg {
+  background-image: linear-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Hover glow button */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+/* Particle dots */
+.particle-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Horizontal laser line animation */
+@keyframes hLaser {
+  0% { transform: translateX(-100%); opacity: 0; }
+  5% { opacity: 0.8; }
+  95% { opacity: 0.8; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
+/* Vertical laser line animation */
+@keyframes vLaser {
+  0% { transform: translateY(-100%); opacity: 0; }
+  5% { opacity: 0.6; }
+  95% { opacity: 0.6; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Shooting star */
+@keyframes shootingStar {
+  0% { transform: translate(-50px, 50px) rotate(-45deg) scaleX(0); opacity: 0; }
+  10% { opacity: 1; transform: translate(-50px, 50px) rotate(-45deg) scaleX(1); }
+  100% { transform: translate(calc(100vw + 50px), calc(-100vh - 50px)) rotate(-45deg) scaleX(1); opacity: 0; }
+}
+
+/* Flicker for neon effect */
+@keyframes neonFlicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+  98% { opacity: 0.7; }
+  99% { opacity: 1; }
+}
+
+.neon-flicker {
+  animation: neonFlicker 4s ease-in-out infinite;
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+}
+
+/* Pricing card featured glow */
+.pricing-featured {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.25), 0 0 80px rgba(6, 182, 212, 0.1);
+}
+
+/* FAQ accordion */
+.faq-content {
+  overflow: hidden;
+}
+
+/* WhatsApp button pulse */
+@keyframes waPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.wa-pulse {
+  animation: waPulse 2s ease-in-out infinite;
+}
