@@ -6,69 +6,72 @@ import { FiCheck, FiZap, FiStar, FiShield } from 'react-icons/fi'
 
 const plans = [
   {
-    name: 'בסיסי',
-    nameEn: 'Basic',
+    name: 'משחק יחיד',
+    nameEn: 'Single Game',
     icon: FiZap,
-    price: '45',
+    price: '60',
     priceNote: 'לשחקן',
-    description: 'כניסה מושלמת לעולם הלייזר טאג',
+    description: 'טעימה מושלמת מהלוחמה האורבנית',
     color: '#06B6D4',
     colorLight: 'rgba(6,182,212,0.15)',
     colorBorder: 'rgba(6,182,212,0.25)',
     featured: false,
     features: [
-      'משחק אחד (20 דקות)',
+      'שמשה אחת (20 דקות משחק)',
+      '~20 דקות הכנה ותדרוך',
       'ציוד לייזר מלא',
-      'עד 10 שחקנים',
+      '2–60 משתתפים',
       'הדרכה מקצועית',
-      'כניסה לזירה',
+      'גילאי 6+',
     ],
-    notIncluded: ['מאמן אישי', 'חדר VIP', 'קייטרינג'],
+    notIncluded: ['משחקים נוספים'],
+    soldierPrice: '50',
   },
   {
-    name: 'פרמיום',
-    nameEn: 'Premium',
+    name: 'משחק כפול',
+    nameEn: 'Double Game',
     icon: FiStar,
-    price: '65',
+    price: '100',
     priceNote: 'לשחקן',
     description: 'החבילה הפופולרית ביותר – הכי שווה!',
     color: '#8B5CF6',
     colorLight: 'rgba(139,92,246,0.15)',
     colorBorder: 'rgba(139,92,246,0.4)',
     featured: true,
+    promoPrice: '80',
     features: [
-      '3 משחקים (60 דקות)',
+      '2 שמשות (40 דקות משחק)',
+      '~20 דקות הכנה ותדרוך',
       'ציוד לייזר מתקדם',
-      'עד 20 שחקנים',
-      'הדרכה + ליווי',
-      'מאמן אישי',
-      'כניסה לכל הזירות',
-      'צילומי Action',
+      '2–60 משתתפים',
+      'מגוון מצבי משחק',
+      'אידיאלי לימי הולדת',
     ],
-    notIncluded: ['חדר VIP', 'קייטרינג מלא'],
+    notIncluded: [],
+    soldierPrice: '80',
   },
   {
-    name: 'VIP',
-    nameEn: 'VIP',
+    name: 'משחק משולש',
+    nameEn: 'Triple Game',
     icon: FiShield,
-    price: '95',
+    price: '120',
     priceNote: 'לשחקן',
-    description: 'החבילה המלכותית – חוויה מושלמת',
+    description: 'החוויה המלאה – שלוש שמשות אדרנלין',
     color: '#A78BFA',
     colorLight: 'rgba(167,139,250,0.15)',
     colorBorder: 'rgba(167,139,250,0.3)',
     featured: false,
+    promoPrice: '100',
     features: [
-      '5 משחקים + בונוסים',
-      'ציוד VIP מיוחד',
-      'עד 30 שחקנים',
-      'מאמן ייעודי',
-      'חדר VIP פרטי',
-      'קייטרינג מלא',
-      'צילום וידאו מקצועי',
-      'מדליות לזוכים',
+      '3 שמשות (60 דקות משחק)',
+      '~20 דקות הכנה ותדרוך',
+      'ציוד לייזר מתקדם',
+      '2–60 משתתפים',
+      'כל מצבי המשחק',
+      'מושלם לאירועים קבוצתיים',
     ],
     notIncluded: [],
+    soldierPrice: '100',
   },
 ]
 
@@ -118,7 +121,7 @@ export default function Pricing() {
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            שלוש חבילות המותאמות לכל גודל קבוצה ותקציב. מחירים כוללים ציוד מלא.
+            בחרו כמה שמשות של לוחמה אורבנית. מחירים לאדם, כולל ציוד מלא וסיור.
           </p>
         </motion.div>
 
@@ -179,7 +182,7 @@ export default function Pricing() {
 
                 {/* Price */}
                 <div className="mb-4">
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex items-baseline gap-2 flex-wrap">
                     <span
                       className="text-5xl font-black"
                       style={{ color: plan.color, textShadow: `0 0 20px ${plan.colorLight}` }}
@@ -187,7 +190,17 @@ export default function Pricing() {
                       ₪{plan.price}
                     </span>
                     <span className="text-slate-400 text-sm">{plan.priceNote}</span>
+                    {'promoPrice' in plan && plan.promoPrice && (
+                      <span className="text-xs font-bold px-2 py-0.5 rounded-full text-green-400 bg-green-400/10 border border-green-400/20">
+                        מבצע ₪{plan.promoPrice}
+                      </span>
+                    )}
                   </div>
+                  {'soldierPrice' in plan && plan.soldierPrice && (
+                    <p className="text-slate-600 text-xs mt-1">
+                      חיילים / סטודנטים / שירות לאומי: <span className="text-slate-400">₪{plan.soldierPrice}</span>
+                    </p>
+                  )}
                   <p className="text-slate-500 text-sm mt-1.5">{plan.description}</p>
                 </div>
 

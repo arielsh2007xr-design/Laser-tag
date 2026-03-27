@@ -4,28 +4,28 @@ import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiPhone, FiMapPin, FiClock, FiSend, FiUser, FiMessageSquare } from 'react-icons/fi'
 
-const WA_NUMBER = '972521234567'
+const WA_NUMBER = '97272338548'
 const WA_MESSAGE = encodeURIComponent('שלום! אני מעוניין להזמין חוויית לייזר טאג ב-לייזר טאג פולג 🎯')
 
 const infoCards = [
   {
     icon: FiPhone,
-    title: 'טלפון / ווטסאפ',
-    lines: ['052-123-4567', '054-765-4321'],
+    title: 'טלפון',
+    lines: ['072-338-5486', '072-330-5719 | *5082'],
     color: '#25D366',
     glow: 'rgba(37,211,102,0.25)',
   },
   {
     icon: FiMapPin,
     title: 'כתובת',
-    lines: ['שד׳ ויצמן 22', 'מתחם פולג, נתניה'],
+    lines: ['הבונים 4', 'אזור התעשייה פולג, נתניה'],
     color: '#06B6D4',
     glow: 'rgba(6,182,212,0.25)',
   },
   {
     icon: FiClock,
     title: 'שעות פעילות',
-    lines: ["א'–ה': 14:00–22:00", "ו': 10:00–15:00 | ש': 18:00–23:00"],
+    lines: ["א'–ד': 09:00–24:00 | ה': 09:00–01:30", "ו': 09:00–18:00 | מוצ\"ש: אחרי שבת–01:00"],
     color: '#8B5CF6',
     glow: 'rgba(139,92,246,0.25)',
   },
